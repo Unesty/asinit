@@ -20,8 +20,10 @@ sas:
 .int 0
 .int 3
 .zero 16
-insmod:
-.string "/usr/local/bin/insmod"
+#agpgart:
+#.string "/usr/local/lib/modules/agpgart.ko"
+#noop:
+#.string ""
 shell:
 .string "/usr/local/bin/busybox"
 .globl ds_args
@@ -82,37 +84,44 @@ leaq sas(%rip), %rsi
 movl $0, %edx
 movq $8,%r10
 syscall
-##load kernel modules
 mov $56,%rax
 syscall
 cmp $0,%rax
-jne parent1
+##user must add kernel modules, if needed, like so
+#mov $2,%rax
+#lea agpgart(%rip),%rdi
+#xor %rsi,%rsi
+#xor %rdx,%rdx
+#syscall
+#mov %rax,%rdi
+#xor %rax,%rax
+#lea -87000(%rsp),%rsi
+#mov $87000,%rdx
+#syscall
+#mov %rax,%rsi
+#mov $175,%rax
+#lea -87000(%rsp),%rdi
+#lea noop(%rip),%rdx
+#syscall
+#mov $3,%rax
+#mov $3,%rdi
+#syscall 
+##run shell
+jne lpp
 mov $59,%rax
-lea insmod(%rip),%rdi
-mov $0,%rsi
-mov $0,%rdx
-syscall
-parent1:
-##run display server
-mov $56,%rax
-syscall
-cmp $0,%rax
-jne parent2
-mov $59,%rax
-lea display_server(%rip),%rdi
+lea shell(%rip),%rdi
 lea ds_args(%rip),%rsi
 lea ds_env(%rip),%rdx
 syscall
-parent2:
-#mov $169,%eax
+
+lpp:
+mov $34,%rax
+syscall
+#mov $169,%eax #turn off system. Things, like closing programs and sync may be needed on some systems
 #mov $0xfee1dead,%rdi
 #mov $672274793,%rsi
 #mov $0x4321fedc,%rdx
 #mov $0x89abcdef,%r10
 #syscall
-lpp:
-mov $34,%rax
-syscall
-
 jmp lpp
 #0xfee1dead 672274793 85072278 369367448 537993216
