@@ -1,0 +1,2 @@
+#!/usr/bin/busybox ash
+exec /usr/bin/busybox ash

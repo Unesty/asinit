@@ -1,0 +1,12 @@
+rm /*
+rm /usr/*
+ln -s /mnt/sda3/voidlinux/bin /
+ln -s /mnt/sda3/voidlinux/sbin /
+ln -s /mnt/sda3/voidlinux/lib /
+ln -s /mnt/sda3/voidlinux/var /
+ln -s /mnt/sda3/voidlinux/home/* /home/
+ln -s /mnt/sda3/voidlinux/usr/* /usr/
+rm -r /etc
+#cp -r /mnt/sda3/voidlinux/etc /
+ln -s /mnt/sda3/voidlinux/etc /
+export XBPS_ARCH=x86_64-musl

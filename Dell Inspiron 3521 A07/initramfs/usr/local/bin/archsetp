@@ -1,0 +1,16 @@
+rm /lib
+rm /lib64
+rm /var
+rm /home
+rm /bin
+rm /sbin
+rm /usr/*
+ln -s /mnt/sda5/usr/bin /
+ln -s /mnt/sda5/usr/bin /sbin
+ln -s /mnt/sda5/usr/lib /
+ln -s /mnt/sda5/usr/lib /lib64
+ln -s /mnt/sda5/var /
+ln -s /mnt/sda5/home /
+ln -s /mnt/sda5/usr/* /usr
+rm -r /etc
+cp -r /mnt/sda5/etc /

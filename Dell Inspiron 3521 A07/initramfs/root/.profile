@@ -1,0 +1,10 @@
+export TERM=linux
+export WAYLAND_DISPLAY=wayland-0
+export MOZ_ENABLE_WAYLAND=1
+export XKB_DEFAULT_LAYOUT=us,ru
+export XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle,grp_led:scroll
+export PATH=/usr/local/bin:/usr/bin:/sbin:/bin:/usr/sbin
+export EDITOR='busybox vi'
+export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib:.
+export CC=musl-clang
+export CXX=clang++

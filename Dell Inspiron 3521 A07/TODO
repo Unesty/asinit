@@ -1,0 +1,4 @@
+Use macro or function for module loading in li3.s and add them automatically
+Wait child process to restart it after it's death
+udevd is used just to create /run/udev/* so this directory can be copied to initramfs and udevd not started on init
+Set environment variables

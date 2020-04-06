@@ -1,0 +1,15 @@
+rm /lib
+rm /lib64
+rm /var
+rm /home
+rm /bin
+rm /sbin
+rm /usr/*
+ln -s /mnt/sda5/root/Downloads/alpine/bin /
+ln -s /mnt/sda5/root/Downloads/alpine/sbin /
+ln -s /mnt/sda5/root/Downloads/alpine/lib /
+ln -s /mnt/sda5/root/Downloads/alpine/var /
+ln -s /mnt/sda5/home /
+ln -s /mnt/sda5/root/Downloads/alpine/usr/* /usr
+rm -r /etc
+cp -r /mnt/sda5/root/Downloads/alpine/etc /

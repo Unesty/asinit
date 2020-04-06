@@ -1,0 +1,13 @@
+rmmod snd_hda_intel
+rmmod snd_intel_dspcfg
+rmmod snd_hda_codec_hdmi
+rmmod snd_hda_codec_realtek
+rmmod snd_hda_codec_generic
+rmmod snd_hda_codec
+rmmod snd_hda_core
+rmmod snd_hwdep
+rmmod snd_pcm
+rmmod snd_timer
+rmmod snd
+rmmod ledtrig_audio
+rmmod soundcore

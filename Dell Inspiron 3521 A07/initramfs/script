@@ -1,0 +1,54 @@
+#this is a temporary solution and should most likely be replaced by something faster and more stable than a shell script
+intel_backlight 1
+export ROOT='/mnt/sda5'
+export TERM=linux
+export WAYLAND_DISPLAY=wayland-0
+export MOZ_ENABLE_WAYLAND=1
+export XKB_DEFAULT_LAYOUT=us,ru
+export XKB_DEFAULT_OPTIONS=grp:alt_shift_toggle,grp_led:scroll
+export PATH=/usr/local/bin:/usr/bin:/sbin:/bin:/usr/sbin
+sysctl kernel.nmi_watchdog=0
+sysctl kernel.soft_watchdog=0
+cp -r $ROOT/etc /
+udevd -d
+modprobe xhci_pci
+modprobe realtek
+modprobe r8169 debug=0
+dhcpcd --noarp -1 -4 &
+mkdir /ddev
+rm -r /dev/h*
+rm -r /dev/p*
+rm -r /dev/r*
+rm -r /dev/vc*
+rm -r /dev/tty*
+rm -r /dev/b*
+rm -r /dev/char
+rm -r /dev/l*
+rm -r /dev/usb
+rm -r /dev/m*
+rm -r /dev/fb0
+rm -r /dev/kmsg
+rm -r /dev/autofs
+rm -r /dev/snapshot
+rm -r /dev/zero
+rm -r /dev/sda*
+rm -r /dev/ne*
+cp -r /dev/* /ddev 
+chmod -R 7777 /ddev/
+chmod 7777 /ddev/*
+chmod 7777 /ddev/*/
+chmod 7777 /ddev/*/*
+chmod 7777 /ddev/*/*/
+sync
+rmmod mac_hid cfg80211 rfkill 8021q garp mrp stp llc
+mkdir /ddev/shm
+mknod -m 7777 /ddev/tty0 c 4 0
+mknod -m 7777 /ddev/tty2 c 4 2
+mknod -m 7777 /ddev/tty3 c 4 3
+mknod -m 7777 /ddev/ptmx c 5 2
+mknod -m 7777 /ddev/full c 1 7
+mknod -m 7777 /ddev/sda3 b 8 3
+mknod -m 7777 /ddev/sda2 b 8 2
+mkdir -m 7777 /ddev/pts
+/bin/rmmod -f snd_hda_codec_hdmi
+exec sh

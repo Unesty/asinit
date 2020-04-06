@@ -1,0 +1,12 @@
+modprobe soundcore
+modprobe ledtrig_audio
+modprobe snd
+modprobe snd_timer
+modprobe snd_pcm 
+modprobe snd_hwdep
+modprobe snd_hda_core
+modprobe snd_hda_codec
+modprobe snd_hda_codec_generic
+modprobe snd_hda_codec_realtek
+modprobe snd_intel_dspcfg dsp_driver=1
+modprobe snd_hda_intel beep_mode=0 snoop=0
