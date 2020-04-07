@@ -12,6 +12,8 @@ cp /usr/lib/modules/$KVER/kernel/drivers/char/agp/agpgart.ko.xz ./
 cp /usr/lib/modules/$KVER/kernel/fs/jbd2/jbd2.ko.xz ./
 cp /usr/lib/modules/$KVER/kernel/drivers/i2c/algos/i2c-algo-bit.ko.xz ./
 cp /usr/lib/modules/$KVER/kernel/drivers/gpu/drm/i915/i915.ko.xz ./
+cp /usr/lib/modules/$KVER/kernel/drivers/media/rc/rc-core.ko.xz ./
+cp /usr/lib/modules/$KVER/kernel/drivers/media/cec/cec.ko.xz ./
 cp /usr/lib/modules/$KVER/kernel/drivers/gpu/drm/drm_kms_helper.ko.xz ./
 cp /usr/lib/modules/$KVER/kernel/drivers/gpu/drm/drm.ko.xz ./
 cp /usr/lib/modules/$KVER/kernel/drivers/input/serio/libps2.ko.xz ./
@@ -53,6 +55,8 @@ echo '.set agpgartSZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/agpgart.k
 echo '.set jbd2SZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/jbd2.ko) >> msz.s
 echo '.set i2c_algo_bitSZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/i2c-algo-bit.ko) >> msz.s
 echo '.set i915SZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/i915.ko) >> msz.s
+echo '.set rc_coreSZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/rc-core.ko) >> msz.s
+echo '.set cecSZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/cec.ko) >> msz.s
 echo '.set drm_kms_helperSZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/drm_kms_helper.ko) >> msz.s
 echo '.set drmSZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/drm.ko) >> msz.s
 echo '.set libps2SZ,' $(stat -c'%s' ./initramfs/usr/local/lib/modules/libps2.ko) >> msz.s

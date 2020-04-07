@@ -42,6 +42,10 @@ fb_sys_fops:
 .string "/usr/local/lib/modules/fb_sys_fops.ko"
 drm:
 .string "/usr/local/lib/modules/drm.ko"
+rc_core:
+.string "/usr/local/lib/modules/rc-core.ko"
+cec:
+.string "/usr/local/lib/modules/cec.ko"
 drm_kms_helper:
 .string "/usr/local/lib/modules/drm_kms_helper.ko"
 intel_gtt:
@@ -425,6 +429,50 @@ mov %rax,%r8
 mov $9,%rax
 xor %rdi,%rdi
 mov $drmSZ,%rsi
+mov $1,%rdx
+mov $1,%r10
+mov $0,%r9
+syscall
+mov %rax,%rdi
+mov $175,%rax
+lea noop(%rip),%rdx
+syscall
+mov $11,%rax
+syscall
+mov $3,%rax
+mov $3,%rdi
+syscall
+mov $2,%rax
+lea rc_core(%rip),%rdi
+xor %rsi,%rsi
+xor %rdx,%rdx
+syscall
+mov %rax,%r8
+mov $9,%rax
+xor %rdi,%rdi
+mov $rc_coreSZ,%rsi
+mov $1,%rdx
+mov $1,%r10
+mov $0,%r9
+syscall
+mov %rax,%rdi
+mov $175,%rax
+lea noop(%rip),%rdx
+syscall
+mov $11,%rax
+syscall
+mov $3,%rax
+mov $3,%rdi
+syscall
+mov $2,%rax
+lea cec(%rip),%rdi
+xor %rsi,%rsi
+xor %rdx,%rdx
+syscall
+mov %rax,%r8
+mov $9,%rax
+xor %rdi,%rdi
+mov $cecSZ,%rsi
 mov $1,%rdx
 mov $1,%r10
 mov $0,%r9

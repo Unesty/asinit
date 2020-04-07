@@ -45,6 +45,7 @@ mkdir /ddev/shm
 mknod -m 7777 /ddev/tty0 c 4 0
 mknod -m 7777 /ddev/tty2 c 4 2
 mknod -m 7777 /ddev/tty3 c 4 3
+mknod -m 7777 /ddev/tty c 5 0
 mknod -m 7777 /ddev/ptmx c 5 2
 mknod -m 7777 /ddev/full c 1 7
 mknod -m 7777 /ddev/sda3 b 8 3
